@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,8 +11,25 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang='en'>
+      <body className={inter.className}>
+        {children}
+        <Toaster
+          className='w-4'
+          toastOptions={{
+            unstyled: true,
+            classNames: {
+              toast: "flex w-80 rounded items-center gap-4 p-2",
+              title: "text-red-400",
+              description: "text-red-400",
+              actionButton: "bg-zinc-400",
+              cancelButton: "bg-orange-400",
+              closeButton: "bg-lime-400",
+              error: "bg-red-800",
+            },
+          }}
+        />
+      </body>
     </html>
   );
 }
